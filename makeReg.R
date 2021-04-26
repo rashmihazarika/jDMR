@@ -1,4 +1,4 @@
-#rashmi 
+
 
   
   makeReg<-function(ref.genome, contexts, chr, min.C, N.boot, N.sim.C, fp.rate, set.tol, out.dir, out.name, makeRegnull)
