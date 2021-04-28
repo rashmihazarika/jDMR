@@ -32,6 +32,7 @@ runMethimputeRegions(Regionfiles=Regionsfolder,
                      samplefiles=filelist,
                      genome="Arabidopsis",
                      context=c("CG","CHG","CHH"),
+                     include.intermediate=TRUE,
                      out.dir=myoutput)
 
 #-----------------------------------------------------------------------------
@@ -48,6 +49,7 @@ runMethimputeGrid(out.dir=myoutput,
                   step=100,
                   genome="Arabidopsis",
                   samplefiles=filelist,
+                  include.intermediate=TRUE,
                   mincov=0,
                   nCytosines=5,
                   context=c("CG","CHG","CHH"))
@@ -84,6 +86,7 @@ filelist <- "/home/rashmi/DMR-Analysis/listFiles.fn"
 # make binary & rc.meth.lvl matrix
 makeDMRmatrix(context=c("CG","CHG","CHH"),
               samplefiles=filelist,
+              include.intermediate=TRUE,
               input.dir=mydir,
               out.dir=mydir)
 
