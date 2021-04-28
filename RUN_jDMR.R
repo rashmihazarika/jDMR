@@ -74,7 +74,7 @@ runMethimputeGrid(out.dir=myoutput,
                   context=c("CG","CHG","CHH"))
 
 #-----------------------------------------------------------------------------
-# Step2: Run DMR Matrix
+# Step3: Run DMR Matrix
 #-----------------------------------------------------------------------------
 rm(list=ls())
 
@@ -92,7 +92,7 @@ makeDMRmatrix(context=c("CG","CHG","CHH"),
               out.dir=mydir)
 
 #-----------------------------------------------------------------------------
-# Step3: Run Filter DMR Matrix
+# Step4: Run Filter DMR Matrix
 #-----------------------------------------------------------------------------
 rm(list=ls())
 
@@ -110,7 +110,7 @@ filterDMRmatrix(replicate.consensus=NULL, # set value if your data is pairwise c
                 data.dir=data.dir)
 
 #-----------------------------------------------------------------------------
-# Step4: Run Annotate DMRs
+# Step5: Run Annotate DMRs
 #-----------------------------------------------------------------------------
 rm(list=ls())
 library(ggplot2)
