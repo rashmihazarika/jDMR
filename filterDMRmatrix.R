@@ -25,7 +25,7 @@ filterReplicateConsensus <- function(status.collect, rc.methlevel.collect, repli
         df.bind$count[df.bind$sample==m] <- 1
       
       Sys.sleep(1/NROW(status.collect))
-      setTxtProgressBar(pb, x)
+      setTxtProgressBar(pb1, x)
     }
     close(pb1)
     #print(df.bind)
