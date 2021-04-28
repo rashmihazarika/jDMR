@@ -68,6 +68,7 @@ runMethimputeGrid(out.dir=myoutput,
                   step=100,
                   genome="Beech",
                   samplefiles=filelist,
+                  include.intermediate=TRUE,
                   mincov=0,
                   nCytosines=5,
                   context=c("CG","CHG","CHH"))
