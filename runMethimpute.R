@@ -72,7 +72,7 @@ runMethimputeGrid <- function(out.dir, chrfile, scaffold, win, step, genome, sam
   filelist <- fread(samplefiles, header=TRUE)
   for (j in 1:length(context)){
     for (i in 1:length(filelist$file)){
-      methfn <- gsub(".*methylome_|\\_All.txt$", "", filelist$file[i])
+      methfn <- gsub(".*methylome_|\\.txt|_All.txt$", "", filelist$file[i])
       cat(paste0("Running file: ",methfn," for context: ",context[j],"\n"), sep = "")
       grid.out <- makeMethimpute(
         df=filelist$file[i],
