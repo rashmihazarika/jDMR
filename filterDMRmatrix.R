@@ -106,7 +106,7 @@ merge.bins <- function(rcmethlvl, statecalls, gap){
     return(out)
   }
   
-  cat(paste0("Now, Merging overlapping and consecutive bins...\n"))
+  message("\nNow, Merging overlapping and consecutive bins...\n")
   # split rcmthlvl matrix based on pattterns
   grl <- split(gr2, gr2$pattern)
   
