@@ -230,10 +230,10 @@ filterDMRmatrix <- function(epiMAF.cutoff, replicate.consensus, gridDMR, data.di
                      data.out=data.dir)
         } 
       } else {
-        message("grid DMR set to FALSE")
+        message("\ngrid DMR set to FALSE")
         }
     }
   } else {
-    message("DMR matrix files do not exist!")
+    message("\nDMR matrix files do not exist!")
   }
 }
