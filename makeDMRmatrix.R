@@ -1,4 +1,3 @@
-
 # This function will merge (column 6) state calls and (column 7) rc.meth.lvl from all samples into one dataframe
 # makes list of 2 dataframes
 merge.cols <- function(filepath, colm, include.intermediate) {
@@ -39,23 +38,29 @@ makeDMRmatrix <- function(context, samplefiles, input.dir, out.dir, include.inte
     if (length(extractflist) != 0){
       mynames <- gsub(paste0("_", context[j], ".txt$"), "", basename(extractflist))
       selectlist <- list()
+      message("\nExtracting filenames and matching them....\n")
       for (a1 in seq_along(mynames)){
-        as <- samplelist[grepl(mynames[a1], samplelist$file),]
-        as$full.path.MethReg <- grep(paste0(mynames[a1], "_", context[j]), extractflist, value=TRUE)
-        selectlist[[a1]] <- as
+        as <- samplelist[grepl(paste0("_",mynames[a1],"_"), samplelist$file),]
+        if (NROW(as)==1){
+          as$full.path.MethReg <- grep(paste0("/", mynames[a1], "_", context[j], ".txt", sep=""), extractflist, value=TRUE)
+          message("\nRegion file ", basename(as$full.path.MethReg)," found !")
+          selectlist[[a1]] <- as
+        } else { 
+          message("\nMultiple files with string match ", mynames[a1]," found !")
+        }
       }
       flist <- rbindlist(selectlist)
       #print(flist)
       
       # Assign unique names for samples with or without replicate data
       if (!is.null(flist$replicate)) {
-        cat(paste0("Running context ", context[j], ". Input data with replicates, creating unique sample names\n"), sep = "")
+        message(paste0("\nRunning context ", context[j], ". Input data with replicates, creating unique sample names...\n"), sep = "")
         flist$name <- paste0(flist$sample,"_", flist$replicate)
       } else {
         flist$name <- flist$sample 
       }
       
-      message(paste0("Now, constructing DMR matrix for ", context[j],"\n"), sep = "")
+      message(paste0("Now, constructing DMR matrix for ", context[j]), sep = "")
       
       # merge samples by Chr coordinates
       #(column 6) state-calls and (column 7) rc.meth.lvl
@@ -111,9 +116,9 @@ makeDMRmatrix <- function(context, samplefiles, input.dir, out.dir, include.inte
              quote=FALSE, row.names=FALSE, col.names=TRUE, sep="\t")
       fwrite(x=postMax.collect, file=paste0(out.dir,"/", context[j],"_postMax.txt"), 
              quote=FALSE, row.names=FALSE, col.names=TRUE, sep="\t")
+      message(paste0("\nDone! \n"), sep = "")
     } else{
       message(paste0("Files for context ",context[j]," do not exist\n"), sep="")
     }
   }
 }
-
