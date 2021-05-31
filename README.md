@@ -6,7 +6,7 @@ We have developed jDMR, a heuristic and fast DMR caller for population level epi
 
 ### Documentation
 
-1. [Running The Pipeline](docs/jDMR-tutorial.pdf)
+1. [jDMR tutorial](docs/jDMR-tutorial.pdf)
 
 ### Contributors:
 
