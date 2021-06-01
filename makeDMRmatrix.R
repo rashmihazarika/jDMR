@@ -26,7 +26,7 @@ merge.cols <- function(filepath, colm, include.intermediate) {
   return(mylist)
 }
 
-makeDMRmatrix <- function(context, samplefiles, input.dir, out.dir, include.intermediate) {
+makeDMRmatrix <- function(context, samplefiles, input.dir, out.dir, include.intermediate=FALSE) {
   # Read the sample file with filenames
   samplelist <- fread(samplefiles, header=T)
   for (j in  1:length(context)){

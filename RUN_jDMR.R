@@ -27,11 +27,11 @@ filelist <- "/home/rashmi/DMR-Analysis/listFiles.fn"
 ##Folder containing Cytosine regions as Rdata files. These are the outputs of RUN_makeReg.R 
 Regionsfolder <- "/home/rashmi/DMR-Analysis/min.C_5"
 
+#Override with include.intermediate=TRUE
 runMethimputeRegions(Regionfiles=Regionsfolder,
                      samplefiles=filelist,
                      genome="Arabidopsis",
                      context=c("CG","CHG","CHH"),
-                     include.intermediate=TRUE,
                      out.dir=myoutput)
 
 #-----------------------------------------------------------------------------
@@ -40,11 +40,11 @@ runMethimputeRegions(Regionfiles=Regionsfolder,
 
 fasta.files <- paste0(Sys.getenv("HOME"),"/DMR-Analysis/FASTA/Arabidopsis")
 
+#Override with include.intermediate=TRUE
 runMethimputeGrid(fasta=fasta.files,
                   samplefiles=filelist,
                   genome="Arabidopsis",
                   context=c("CG","CHG","CHH"),
-                  include.intermediate=TRUE,
                   out.dir=myoutput,
                   win=100,
                   step=100,
@@ -65,7 +65,6 @@ filelist <- "/home/rashmi/DMR-Analysis/listFiles.fn"
 # make binary & rc.meth.lvl matrix
 makeDMRmatrix(context=c("CG","CHG","CHH"),
               samplefiles=filelist,
-              include.intermediate=TRUE,
               input.dir=mydir,
               out.dir=mydir)
 

@@ -1,5 +1,5 @@
 
-runMethimputeRegions <- function(samplefiles, Regionfiles, genome, context, out.dir, include.intermediate, mincov=0, nCytosines=0) {
+runMethimputeRegions <- function(samplefiles, Regionfiles, genome, context, out.dir, include.intermediate=FALSE, mincov=0, nCytosines=0) {
   df.obs <- list()
   df.sim <- list()
   merge.list <- vector(mode="list")
@@ -83,7 +83,7 @@ binGenome <- function(fasta, win, step, genome, out.dir){
   dput(new, out.name)
 }
 
-runMethimputeGrid <- function(out.dir, chrfile, scaffold, win, step, genome, samplefiles, context, mincov, include.intermediate, nCytosines){
+runMethimputeGrid <- function(out.dir, chrfile, scaffold, win, step, genome, samplefiles, context, mincov, include.intermediate=FALSE, nCytosines){
   binGenome(chrfile, scaffold, win, step,genome, out.dir)
   merge.list <- vector(mode="list") 
   filelist <- fread(samplefiles, header=TRUE)
