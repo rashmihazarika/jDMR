@@ -21,7 +21,6 @@ myoutput <- "/home/rashmi/jDMR-output"
 ## Note that Methimpute files should have prefix "methylome" and suffix "All.txt"
 filelist <- "/home/rashmi/DMR-Analysis/listFiles.fn"
 
-
 #-----------------------------------------------------------------------------
 # Step2: Run Region DMRs
 #-----------------------------------------------------------------------------
@@ -36,42 +35,21 @@ runMethimputeRegions(Regionfiles=Regionsfolder,
                      out.dir=myoutput)
 
 #-----------------------------------------------------------------------------
-# Step2: Run grid DMRs
+# Step2: And/Or Run grid DMRs
 #-----------------------------------------------------------------------------
-# This is an example for Arabidopsis
-#Here you need to specify the chromosome lengths. For Arabidopsis you can use the ones provided.
-chrlengths <- c(chr1=30427671, chr2=19698289, chr3=23459830, chr4=18585056, chr5=26975502)
 
-runMethimputeGrid(out.dir=myoutput,
-                  scaffold=FALSE, 
-                  chrfile=chrlengths,
-                  win=100,
-                  step=100,
+fasta.files <- paste0(Sys.getenv("HOME"),"/DMR-Analysis/FASTA/Arabidopsis")
+
+runMethimputeGrid(fasta=fasta.files,
+                  samplefiles=filelist,
                   genome="Arabidopsis",
-                  samplefiles=filelist,
+                  context=c("CG","CHG","CHH"),
                   include.intermediate=TRUE,
-                  mincov=0,
-                  nCytosines=5,
-                  context=c("CG","CHG","CHH"))
-
-# This is an example for Beech
-# If your genome doesnot have a proper genome Assembly, has scaffolds, etc
-# Use the fasta index file to obtain the chrlengths.
-f <- fread("/home/rashmi/Beech/ref_genome/fasta/Fagus_sylvatica_genome.fasta.fai")
-chrlengths <- f$V2
-names(chrlengths) <- f$V1
-
-runMethimputeGrid(out.dir=myoutput,
-                  scaffold=TRUE, 
-                  chrfile=chrlengths,
+                  out.dir=myoutput,
                   win=100,
                   step=100,
-                  genome="Beech",
-                  samplefiles=filelist,
-                  include.intermediate=TRUE,
                   mincov=0,
-                  nCytosines=5,
-                  context=c("CG","CHG","CHH"))
+                  nCytosines=5)
 
 #-----------------------------------------------------------------------------
 # Step3: Run DMR Matrix
