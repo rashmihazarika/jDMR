@@ -1,5 +1,5 @@
 
-filterReplicateConsensus <- function(status.collect, rc.methlevel.collect, replicate.consensus, gap=1){
+filterReplicateConsensus <- function(status.collect, rc.methlevel.collect, replicate.consensus){
   
   if (!is.null(status.collect$epiMAF)){
     status.collect <- status.collect[,-c("epiMAF")]
@@ -116,13 +116,12 @@ merge.bins <- function(rcmethlvl, statecalls, gap){
   
   for (x in 1:length(grl)){
     a <- data.frame(grl[[x]])
-    a1 <- a %>% arrange(pattern, start) %>% group_by(pattern) %>% 
-      mutate(indx = cumsum(start > lag(end, default = start[1]) + gap))
+    a1 <- a %>% arrange(pattern, start) %>% group_by(pattern) %>% mutate(indx = cumsum(start > lag(end, default = start[1]) + gap))
     a1.gr <- makeGRangesFromDataFrame(a1, keep.extra.columns=TRUE)
     df <- lapply(split(a1.gr, a1.gr$indx), fn)
     mylist[[x]] <- df
     
-    Sys.sleep(1/length(grl))
+    Sys.sleep(0.05)
     setTxtProgressBar(pb3, x)
   }
   close(pb3)
@@ -130,7 +129,7 @@ merge.bins <- function(rcmethlvl, statecalls, gap){
   f.df <- unlist(mylist)
   f.df <- do.call(rbind, lapply(f.df, data.frame))
   f.df <- f.df[order(f.df[,1], f.df[,2]),]
-  f.df[,(6:NCOL(f.df))] <- lapply(f.df[,(6:NCOL(f.df))], function(xy){ floorDec(xy,5)})
+  f.df[,(6:NCOL(f.df))] <- lapply(f.df[,(6:NCOL(f.df))], function(xy){ floorDec(xy,5) })
   
   final.status.collect <- subset(final.status.collect, select = -c(strand, pattern))
   final.rcmethlvl.collect <- subset(f.df, select = -c(strand))
