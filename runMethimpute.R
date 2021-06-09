@@ -83,8 +83,8 @@ binGenome <- function(fasta, win, step, genome, out.dir){
   dput(new, out.name)
 }
 
-runMethimputeGrid <- function(out.dir, chrfile, scaffold, win, step, genome, samplefiles, context, mincov, include.intermediate=FALSE, nCytosines){
-  
+runMethimputeGrid <- function(out.dir, fasta, win, step, genome, samplefiles, context, mincov, include.intermediate=FALSE, nCytosines){
+
   binGenome(fasta, win, step,genome, out.dir)
   merge.list <- vector(mode="list") 
   filelist <- fread(samplefiles, header=TRUE)
