@@ -6,6 +6,7 @@ library(data.table)
 library(dplyr)
 library(methimpute)
 library(stringr)
+library(seqinr)
 
 #-----------------------------------------------------------------------------
 # Step1: Load the source code
