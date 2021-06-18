@@ -11,3 +11,23 @@ jDMR is a heuristic and fast DMR caller for population level epigenomic studies 
 - Rashmi Hazarika - rashmi.hazarika@tum.de
 - Yadi Shahryary - y.shahryary@tum.de
 - Frank Johannes - frank@johanneslab.org
+
+### Installation
+
+
+##### Installing from the Github
+
+To install from GitHub (development version), follow the steps given below. 
+
+##### Step 1 — Install a last version of R (>=3.6)
+
+##### Step 2 — In R, please install all dependencies and execute the following commands:
+ - 2.1.  install.packages("devtools")
+ - 2.2.  library(devtools)
+ - 2.3.  devtools::install_github("rashmihazarika/jDMR")
+
+------------------------------------------------------------------------
+
+### How to use AlphaBeta
+
+Please open the [vignette](https://github.com/rashmihazarika/jDMR/blob/master/vignettes/jDMR-tutorial.pdf) file.
