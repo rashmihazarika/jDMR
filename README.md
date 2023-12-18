@@ -26,4 +26,5 @@ Please open the [vignette](https://github.com/rashmihazarika/jDMR/blob/master/vi
 - Rashmi Hazarika - rashmi.hazarika@tum.de
 - Yadi Shahryary - y.shahryary@tum.de
 - Frank Johannes - frank@johanneslab.org
+- Robert Piecyk - robert.piecyk@tum.de
 
